@@ -1,0 +1,57 @@
+--Part-1
+1. Sebutkan perbedaan Data Warehouse dan Data Lake
+  a) Data Warehouse:
+    - Struktur Data: Data Warehouse datanya terstruktur dan Skemanya terdefinisi, maksutnya Data Warehouse dirancang untuk menyimpan data terstruktur
+    yang telah diolah dan diatur dengan baik. Sedangkan Skema terdefinisi maksutnya ialah menggunakan skema yang terdefinisi dengan baik.
+    - Tujuan: Tujuan dari penggunaan Data Warehouse ialah didesain untuk analitik bisnis, pelaporan dan pembuatan keputusan.
+    - Sumber Data: Data yang diproses akan dimasukkan kedalam Data Warehouse biasanya sudah diproses, dibersihkan, dan diubah ke dalam format yang 
+    konsisten.
+    - Waktu Respons: Pengoptimalan untuk kuery yang cepat dan kompleks, memungkinkan analisis data yang efisien.
+    - Penggunaan: Digunakan oleh Analis data, Eksekutif Bisnis, dan Pengambilan Keputusan untuk mengakses laporan dan analitik yang dapat digunakan
+    untuk strategi bisnis.
+  b) Data Lake:
+    - Struktur Data: Data Lake datanya tidak terstruktur dimana data ini menyimpan data dalam bentuk asli, baik terstruktur, semi-terstruktur, maupun 
+    tidak terstruktur, dengan menggunakan skema-on-read maka data lake tidak memerlukan skema tetap saat data dimasukkan, melainkan skema dapat
+    diterapkan saat data diambil dan digunakan.
+    - Tujuan: Tujuan dari penggunaan Data Lake ialah dirancang untuk menyimpan volume data yang sangat besar dengan fleksibelitas tinggi, sehingga cocok
+    untuk analisis data yang bervariasi, termasuk data ilmiah dan riset.
+    - Sumber Data: Data yang ada merupakan data yang masih mentah/ dalam bentuk aslinya dimana tanpa banyak melakukan pemrosesan awal, memungkinkan penggunaan
+    data untuk berbagai tujuan dimasa depan.
+    - Waktu Respons: Waktu yang digunakan dalam menyimpan data lebih fleksibel tetapi kuery yang digunakan mungkin lebih lambat karena datanya belum diolah.
+    -Penggunaan: Biasanya digunakan oleh Data Engineer, Data Scientist yang membutuhkan akses data mentah untuk eksplorasi, permodelan maupun analisis lanjutan.
+
+2. Apa yang membedakan teknologi database untuk data warehouse 
+(OLAP) dari teknologi database konvensional (OLTP)
+  a) OLAP (Online Analytical Processing)
+    1) Tujuan: Dirancang untuk analitik bisnis dan pelaporan, digunakan untuk kueri kompleks yang melibatkan agregasi data dan analisis historis
+    2) Struktur Data: Data yang disimpan dalam bentuk terstruktur seperti skema bintang yang memfasilitasi analisis.
+    3) Operasi: Dioptimalkan untuk operasi baca yang kompleks seperti agregasi, drill-down, roll-up, dan slicing.
+  b) OLTP (Online Transaction Processing)
+    1) Tujuan: Dirancang untuk menangani transaksi harian yang tinggi atau padat, seperti pemrosesan pesanan, pembayaran, atau juga manajemen pelangggan.
+    2) Struktur Data: Data yang disimpan dalam bentuk tabel relasional yang dirancang untuk transaksi cepat dan efisien.
+    3) Operasi: Dioptimalkan untuk waktu respons yang sangat cepat pada opearsi baca dan tulis.
+
+3. Teknologi apa saja yang biasanya dipakai untuk data warehouse
+  a) Amazon Redshift
+  b) Google BigQuery
+  c) Microsoft Azure Synapse Analytics
+
+4. Tuliskan setiap perintah dari proses instalasi citus menggunakan docker compose sampai tabel terbentuk selanjutnya buat tangkapan layarnya dan hasilnya.
+  1) Melakukan git-clone terhadap repo citus
+  2) Menjalankan docker compose up -d
+  3) Membuat connection dengan Dbeaver
+  4) Membuat tabel
+
+5. Jelaskan perbedaan antara access method heap dan columnar pada citus
+  a) Metode Heap-storage
+    1) Struktur Data: Data disimpan dalam bentuk baris, dimana setiap baris dalam tabel disimpan secara beruntun pada disk.
+    2) Penggunaan: - Operasi transaksional: cocok untuk operasi transaksional seperti OLTP, dimana banyak operasi baca dan tulis. - Update dan delete: lebih 
+    efisien untuk operasi yang sering melakukan update dan delete pada baris data.
+    3) Keuntungan: Kinerja yang baik untuk operasi yang membutuhkan akses cepat ke baris data individual, metode penyimpanan yang lebih sederhana dan umum 
+    digunakan juga menjadi keuntungan dari metode ini.
+  b) Metode Columnar-storage 
+    1) Struktur Data: Data disimpan dalam bentuk kolom, dimana setiap kolom dalam tabel disimpan secara terpisah pada disk.
+    2) Penggunaan: - Operasi Analitik: Cocok untuk operasi analitik seperti OLAP, dimana kueri sering melibatkan agregasi dan scan kolom besar. - Read-intensive 
+    Workloads: ideal untuk beban kerja yang lebih banyak melakukan operasi baca dibandingkan tulis.
+    3) Keuntungan: Kompresi data yang lebih efisien karena data dalam satu kolom sering kali memiliki pola yang serupa. Kinerja yang lebih baik untuk kueri yang 
+    hanya membutuhkan beberapa kolom, mengurangi I/O dengan hanya membaca kolom yang diperlukan.

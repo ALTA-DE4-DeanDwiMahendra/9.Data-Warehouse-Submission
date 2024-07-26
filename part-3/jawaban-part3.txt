@@ -1,0 +1,24 @@
+--Part-3
+1. Jelaskan perbedaan antara replication dan sharding
+  a. Replication adalah proses menyalin dan memelihara data yang sama di beberapa server database. Cara kerjanya dibagi dua: master-slave repication dan multi-master replication, tujuannya:
+  jika ketersediaannya tinggi pada satu server maka server yang lain dapat melayani permintaan tanpa kehilangan data, bisa membagi beban baca diantara beberapa server, dan memiliki beberapa 
+  salinan data sebagai data cadangan.
+  b. Sharding adalah proses membagi data menjadi bagian-bagian kecil yang diebut shard dan mendistribusikannya ke beberapa server database. Setiap shard adalah subset dari data keseluruhan, 
+  cara kerjanya itu secara horizontal-partitioning dan shard-key, dimana tujuannya dilakukan sharding ialah meningkatkan kapasitas database dengan menambah lebih banyak server untuk menyimpan
+  dan mengelola data, Kinerjanya ialah mengurangi beban pada setiap server dengan mendistribusikan data dan permintaan.
+
+2. Lakukan percobaan untuk membuat reference table + distributed table seperti pada repo (....)
+
+3. Di node/worker mana saja product "Headphone" tersimpan? Tunjukkan shard id-nya?
+
+4. Di node/worker mana saja order dengan id 13 tersimpan? Tunjukkan shard idnya
+
+5. Kapan sebaiknya kita menggunakan replication?
+  Saat yang tepat menggunakan replication adalah 1. Saat data referensi sering diakses oleh banyak query tetapi jarang diubah, seperti daftar kode pos, negara, mata uang dan jenis produk. 2. 
+Saat data yang tidak sering berubah tapi dibutuhkan oleh banyak node untuk operasi querynya. 3. Saat data dikurangi latensi query dengan memastikan data yang sering diakses tersedia di semua 
+node 
+
+6. Kapan sebaiknya kita menggunakan sharding?
+  Saat yang tepat menggunakan sharding ialah : 1. Ketika data yang dimiliki punya volume yang sangat besar dimana data ini tidak dapat ditangani oleh satu node saja, 2. saat beban kerja yang
+tinggi sharding dapat membantu menyebarkan beban ke beberapa node, sehingga meningkatkan throughtput keseluruhan sistem. Ketika sumber daya seperti CPU, memori dan disk pada satu node terbatas, 
+maka sharding pilihan yang tepat untuk memakainya.

@@ -1,0 +1,13 @@
+--Part-2
+1. Jalankan citus dikomputer lokal dengan menggunakan docker compose
+2. Tuliskan perintah untuk membuat
+  a. Tabel biasa
+  b. Columnar Tabel
+3. Masukkan 100 baris data ke dalam tabel biasa dan tabel columnar
+4. Menampilkan perbedaan ukuran antara tabel biasa dan tabel columnar
+5. Tuliskan kesimpulannya
+    Untuk kesimpulannya adalah kita dapat melihat bahwa columnar-table itu memiliki ukuran yang lebih kecil
+  dibanding dengan tabel biasa. Hal ini bisa terjadi dikarenakan bahwa penyimpanan kolom lebih efisien dalam 
+  hal penggunaaan ruang disk. Penyimpanan kolom biasanya lebih efisien untuk skenario dimana data dibaca dalam
+  jumlah besar tetapi dengan beberapa kolom yang digunakan dalam setiap kueri, dan sering terjadi pada OLAP
+  
